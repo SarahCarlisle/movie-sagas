@@ -35,3 +35,5 @@ pool.query(queryText, [postMovie.title, postMovie.description, postMovie.poster]
       res.sendStatus(500);
    });
 });
+
+module.exports = router;
