@@ -1,10 +1,11 @@
+//if I have time
 const express = require('express');
 const pool = require('../modules/pool');
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    // return all categories
+    // Search by genre
     const queryText = `SELECT * FROM genres ORDER BY name ASC`;
     pool.query(queryText)
         .then( (result) => {

@@ -3,6 +3,10 @@ const app = express();
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 5000;
 
+const favoriteRouter = require("./routes/favorite.router");
+const categoryRouter = require("./routes/category.router");
+const searchRouter = require("./routes/display.router");
+
 /** ---------- MIDDLEWARE ---------- **/
 app.use(bodyParser.json()); // needed for angular requests
 app.use(bodyParser.urlencoded({ extended: true }));
