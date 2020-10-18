@@ -11,11 +11,11 @@ export class DisplayItem extends Component {
     };
 
     //what does this do?????
-    changeHandler = (event) => {
-        this.setState({
-            movies: event.target.value,
-        });
-    };
+    // changeHandler = (event) => {
+    //     this.setState({
+    //         movies: event.target.value,
+    //     });
+    // };
 
 
     // submit = () => {

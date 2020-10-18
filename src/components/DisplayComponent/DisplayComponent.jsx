@@ -1,18 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-class Display extends Component {
+export class Display extends Component {
     render() {
         return (
-            <div>
+            <div>  className="display-movie">
+
             </div>
         )
     }
 }
 
+
 const mapStateToProps = (state) => {
     return {
-        movies: state.movies,
+        search: state.moviesReducer,
+        favorite: state.genresReducer,
     };
 };
 
