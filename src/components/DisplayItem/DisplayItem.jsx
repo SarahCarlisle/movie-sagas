@@ -6,6 +6,19 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Search from '../Search/Search';
 
 export class DisplayItem extends Component {
+
+//   bindClick = (event) => { 
+//   event.preventDefault();
+//   this.props.dispatch({
+//       type: "GET_MOVIES",
+//       payload: this.state.movies
+//   })
+//   this.setState({
+//       movies: ''
+//   })
+// };
+
+
     render() {
         return (
             <div className="content-container">
@@ -30,7 +43,11 @@ const mapStateToProps = (state) => {
     return {
       movies: state.movies,
       genres: state.genres,
+   
+
+      //this.bindClick = this.bindClick.bind(this);
+    }
     };
-  };
+  
 
   export default connect(mapStateToProps)(DisplayItem);
