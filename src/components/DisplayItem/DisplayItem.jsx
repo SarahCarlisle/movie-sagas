@@ -10,23 +10,22 @@ export class DisplayItem extends Component {
         movies: "",
     };
 
-    //what does this do?????
-    // changeHandler = (event) => {
-    //     this.setState({
-    //         movies: event.target.value,
-    //     });
-    // };
+    changeHandler = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value,
+        });
+    };
 
-
-    // submit = () => {
-    //   this.props.dispatch({
-    //     type: "ADD_FAVORITE",
-    //     payload: {
-    //       movies: this.state.movies,
-    //       url: this.props.gif.images.fixed_width.url,
-    //     },
-    //   });
-    // };
+    submitHandler = () => {
+        this.props.dispatch({
+            type: "GET_MOVIE",
+            payload:
+                movies: this.state.
+        });
+        this.setState({
+            search: "",
+        });
+    };
 
     render() {
         console.log(this.state.movies);

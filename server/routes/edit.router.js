@@ -4,11 +4,11 @@ const pool = require("../modules/pool");
 const router = express.Router();
 
 //edit info
-router.put('/:id', (req,res) =>{
-    let movieid = req.body;
-    let id = req.params.id;
-    let queryText = `UPDATE "movies" SET "id"=$1; "title"=$2, "description"=$3, poster=$4`;
-    pool.query(queryText, [req.params.id, req.body.title, req.body.description, req.body.pic])
+router.put("/", (req,res) =>{
+    const queryText = `Update "movies" SET "description" = $1 WHERE title = $2`;
+    const queryValues = [req.body.details. req.body.title];
+  
+    pool.query(queryText, queryValues)
         .then(function(result){
 
         res.send('Movie info updated')

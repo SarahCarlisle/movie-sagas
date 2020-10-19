@@ -6,7 +6,10 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     // Search by genre
-    const queryText = `SELECT * FROM genres ORDER BY name ASC`;
+    const queryText = `SELECT movies.title, array_agg(name) as genres FROM "movies"
+    JOIN "movie id" ON juntion = movies.id
+    JOIN genres on junction.genres id = genres.id
+    GROUP BY movies.title`;
     pool.query(queryText)
         .then( (result) => {
             res.send(result.rows);

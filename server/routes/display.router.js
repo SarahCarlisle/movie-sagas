@@ -2,6 +2,7 @@ const express = require("express");
 const axios = require("axios");
 require("dotenv").config();
 
+const pool = require('../modules/pool');
 const router = express.Router();
 
 //getting movies from database

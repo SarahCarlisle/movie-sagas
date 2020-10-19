@@ -17,16 +17,16 @@ import axios from "axios";
 
 // Create the rootSaga generator function
 function* rootSaga() {
-    yield takeEvery("GET_MOVIE", getMovieSaga);
+    yield takeEvery("GET_MOVIES", getMovieSaga);
     yield takeEvery("GET_GENRES", getGenresSaga);
-    yield takeEvery("DELETE_MOVIE", deleteMovieSaga);
+    yield takeEvery("EDIT_MOVIE", editMovieSaga);
 }
 
 function* getMovieSaga(action) {
     try {
         console.log("payload in getMovieSaga", action.payload);
-        const response = yield axios.post("/api/movie", action.payload);
-        yield put({ type: "SET_MOVIE", payload: response.data });
+        const response = yield axios.get("/api/display", action.payload);
+        yield put({ type: "SET_MOVIES", payload: response.data });
     } catch (err) {
         alert("Unable to get movie from the server", err);
     }
@@ -34,7 +34,7 @@ function* getMovieSaga(action) {
 
 function* getGenresSaga(action) {
     try {
-        const response = yield axios.get("/api/genre");
+        const response = yield axios.get("/api/genre",);
 
         yield put({ type: "SET_GENRES", payload: response.data });
     } catch (err) {
@@ -42,12 +42,13 @@ function* getGenresSaga(action) {
     }
 }
 
-function* deleteMovieSaga(action) {
+function* editMovieSaga(action) {
     try {
-        const response = yield axios.delete(`api/movie/${action.payload}`);
-        yield put({ type: "GET_MOVIE" });
+        console.log ("action.payload", action.payload);
+        const response = yield axios.put(`/api/edit${action.payload.id}`);
+        yield put({ type: "GET_MOVIES" });
     } catch (err) {
-        alert("Unable to remove movie");
+        alert("Unable to edit movie");
     }
 }
 

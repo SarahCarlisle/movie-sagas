@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-export class Edit extends Component {
+export class MovieDetails extends Component {
     render() {
         return (
             <div>
-                hi
+                
             </div>
         )
     }
 }
 
-export default Edit
+export default MovieDetails
