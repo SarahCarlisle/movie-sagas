@@ -4,7 +4,7 @@ export class Edit extends Component {
     render() {
         return (
             <div>
-                hi
+              <p>test</p>
             </div>
         )
     }
