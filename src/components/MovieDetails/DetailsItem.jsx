@@ -1,35 +1,33 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
 
-
-class DetailsItem extends Component {
+class DisplayItem extends Component {
 
     click = (event) => {
+        console.log(this.props.review);
         this.props.dispatch({
-            type: 'VIEW_MOVIE',
-            payload: this.props.view
+            type: 'REVIEW_MOVIE',
+            payload: this.props.review
         })
-        console.log(this.props.view);
-         this.props.history.push('/details')
+        this.props.history.push('/details')
     }
-    render() {
-        return (
+
+    render(){
+        return(
             <>
 
-                <div>
-                     <li>{this.props.view.title} <img src={this.props.view.poster}></img><button onClick={this.click}>Read More</button></li>
-                </div>
+            <div>
+                <li>{this.props.review.title} <img src={this.props.review.poster}></img>
+                <button onClick={this.click}>More Information</button></li>
+            </div>
             </>
         )
     }
-
 }
-const mapStateToProps = (state) => {
-    return {
-      movies: state.movies,
-      genres: state.genres,
-    }
-  };
 
-export default connect(mapReduxStateToProps)(withRouter(DetailsItem));
+const mapReduxStateToProps = (globalStore) => ({
+    movies: globalStore.movies
+});
+
+export default connect(mapReduxStateToProps)(withRouter(DisplayItem));

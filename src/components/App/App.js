@@ -1,35 +1,17 @@
 import React, { Component } from 'react';
-import axios from "axios";
 import { connect } from "react-redux";
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 // components
+import Display from '../Display/Display';
+import Details from '../MovieDetails/Details';
 import Edit from '../EditPage/Edit';
-import Search from '../Search/Search';
-import Display from '../DisplayItem/DisplayItem';
+
 
 class App extends Component {
-  componentDidMount() {
-    this.props.dispatch({
-      type: "GET_MOVIES"
-    });
-  }
-
-  getMovies = () => {
-    axios.get("/api/display").then(response => {
-      console.log(response.data);
-      this.props.dispatch({
-        type: "GET_MOVIES",
-        payload: response.data,
-      });
-    }).catch(err => {
-      console.log('error in axios get request', err);
-    });
-  };
-
   render() {
-    console.log (this.props)
+    console.log(this.props)
     return (
       <Router>
         <div className="App">
@@ -43,10 +25,16 @@ class App extends Component {
               </ul>
             </nav>
           </header>
-          <Route exact path="/" component={Display} />
-          <Route exact path="/Edit" component={Edit} />
-        <Route exact path="/Search" component={Search} />
         </div>
+        <Route exact path='/'>
+          <Display />
+        </Route>
+        <Route exact path='/details'>
+          <Details />
+        </Route>
+        <Route exact path='/edit'>
+          <Edit />
+        </Route>
       </Router>
     );
   }
