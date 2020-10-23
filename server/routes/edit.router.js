@@ -5,19 +5,13 @@ const router = express.Router();
 
 //edit info
 router.put("/", (req,res) =>{
-    const queryText = `Update "movies" SET "description" = $1 WHERE title = $2`;
-    const queryValues = [req.body.details. req.body.title];
-  
-    pool.query(queryText, queryValues)
-        .then(function(result){
-
-        res.send('Movie info updated')
-        }).catch(function (err){
-
-            console.log('error in PUT -router.js', queryText, err);
-            res.status(400).send('movieid not found');
-        })
-})
+  let queryText = `UPDATE "movies" SET "title"=$1, "description"=$2 WHERE "id"=$3; `;
+  pool.query(queryText, [req.body.title, req.body.description, req.body.id])
+  .then(result => res.sendStatus(200)).catch(err => {
+      console.log('ERROR in put', err);
+      res.sendStatus(500);
+  });
+});
 
 //delete a movie
 router.delete("/:id", (req, res) => {

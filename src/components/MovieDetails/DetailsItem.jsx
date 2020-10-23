@@ -18,7 +18,7 @@ class DisplayItem extends Component {
             <>
 
             <div>
-                <li> {this.props.review.title} <br /> <img src={this.props.review.poster}></img> 
+                <li> {this.props.review.title} <br /> <img src={this.props.review.poster} alt="Movies"></img> 
                 <br/ > <button onClick={this.click}>More Information</button> <hr /> </li>
             </div>
             </>
